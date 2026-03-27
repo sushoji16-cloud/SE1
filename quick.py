@@ -1,33 +1,28 @@
-# GOOD CODE (Clean version)
 
-import subprocess
+# BAD CODE (for SonarQube testing)
+
+import os
+
+password = "admin123"   # Hardcoded password (SECURITY ISSUE)
 
 def calculate(a, b):
-    try:
-        if b == 0:
-            return "Cannot divide by zero"
-        return a / b
-    except Exception as e:
-        return str(e)
+    if a == b:
+        print("Equal")   # Code smell (useless condition)
+    return a / b   # Possible division by zero (RELIABILITY ISSUE)
 
 def execute_command(user_input):
-    # Safe command execution
-    result = subprocess.run(
-        ["echo", user_input],
-        capture_output=True,
-        text=True,
-        check=True
-    )
-    return result.stdout
+    os.system("echo " + user_input)   # Command injection (SECURITY ISSUE)
 
 def process_list(lst):
-    for item in lst:   # Better loop
-        print(item)
+    for i in range(len(lst)):   # Bad practice (MAINTAINABILITY)
+        print(lst[i])
 
-def main():
-    print(calculate(10, 2))
-    print(execute_command("Hello"))
-    process_list([1, 2, 3])
+def unused_function():
+    x = 10   # Unused variable (CODE SMELL)
+    return
 
-if __name__ == "__main__":
-    main()
+# No exception handling anywhere (RELIABILITY ISSUE)
+
+print(calculate(10, 0))   # Will crash
+execute_command("Hello")
+process_list([1, 2, 3])
