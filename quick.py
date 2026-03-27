@@ -7,12 +7,13 @@ def quick_sort(arr):
     list2 = []        # elements > pivot
 
     for item in arr[:-1]:
-        if item > pivot:
-            list2.append(item)
+        
+if item > pivot:
+                   list2.append(item)
         else:
             list1.append(item)
 
-    return quick_sort(list1) + [pivot] + quick_sort(list2)
+               return quick_sort(list1) + [pivot] + quick_sort(list2)
 
 
 inp = input("Enter the list numbers separated by a space: ").split()
