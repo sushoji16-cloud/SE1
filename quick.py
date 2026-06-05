@@ -27,3 +27,4 @@ print(calculate(10, 0))   # Will crash
 execute_command("Hello")
 process_list([1, 2, 3])
 print("hello")
+print("hello")
